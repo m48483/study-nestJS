@@ -24,4 +24,11 @@ export class BoardsService {
   getBoardById(id: number): Board {
     return this.boards.find((board) => board.id === id);
   }
+  deleteAllBoards(): void {
+    this.boards = [];
+  }
+  deleteBoardById(id: number): void {
+    // id가 같을 때만 삭제
+    this.boards = this.boards.filter((board) => board.id !== id);
+  }
 }
