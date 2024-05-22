@@ -1,4 +1,11 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  ParseIntPipe,
+  Post,
+} from '@nestjs/common';
 import { BoardsService } from './boards.service';
 import { Board } from './boards.model';
 import { RequestBoardDto } from './dto/request-board.dto';
@@ -25,5 +32,10 @@ export class BoardsController {
     @Body() request: RequestBoardDto,
   ): Board {
     return this.boardsService.createBoard(request);
+  }
+
+  @Get('/:id')
+  getBoardById(@Param('id', ParseIntPipe) id: number): Board {
+    return this.boardsService.getBoardById(id);
   }
 }
