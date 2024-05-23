@@ -1,4 +1,4 @@
-export class RequestBoardDto {
+export interface RequestBoardDto {
   name: string;
   content: string;
 }
